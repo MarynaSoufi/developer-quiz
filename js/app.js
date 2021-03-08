@@ -159,6 +159,7 @@ const app = {
             }
             //add timer
             const section = document.querySelector('.question');
+            section.classList.add('container');
             const span = document.createElement('span');
             span.classList.add("timer");
             section.appendChild(span);
