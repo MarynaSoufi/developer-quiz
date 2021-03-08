@@ -8,6 +8,7 @@ import { saveDataInLocalStorage, getArrayFromLocalSrotage } from './localstorage
 
 const app = {
     async init(){
+        this.data = [];
         this.currentQuestion = 0;
         this.total;
         this.score = 0;
@@ -15,7 +16,7 @@ const app = {
         this.root = document.getElementById('root');
         this.timer = 0;
         this.timeLeft = 0;
-        this.totalTime = 150;
+        this.totalTime = 30;
         this.createStartScreen();
         
     },
@@ -98,6 +99,7 @@ const app = {
         this.clearScreenAreaForce();
         //array with questions from localStorage
         let data = questions;
+        this.data = data;
         //total number of questions
         this.total = data.length;
         //clear clear everything at the end of the quiz or after aborting the test
@@ -185,6 +187,7 @@ const app = {
                 clearTimeout(this.timer);
                 //show score
                 const score = this.calculateScore();
+                //create screen with score
                 this.createResultScreen(score);
                 return;
             }
@@ -214,9 +217,8 @@ const app = {
     },
     //calculating score logic
     calculateScore() {
-        const buttons = document.getElementsByName('answer');
-        console.log(buttons);
         for(let q in this.progress) {
+            //determine the correct answer
             const containsValues = this.progress[q].answers.length 
                 && this.progress[q].answers.filter(i => this.progress[q].correctAnswers.includes(i)).length === this.progress[q].answers.length;
             if(containsValues) {
@@ -230,22 +232,38 @@ const app = {
     createResultScreen(score) {
         //first clear screen
         this.clearScreenAreaForce();
-
+        let str = "";
         const section = document.createElement("section");
         section.classList.add("result");
-
         const result = document.createElement("p");
         const dats = document.createElement('div');
-        this.progress.forEach((e) => {
-            console.log(e);
+        //show all questions with correct answers and with real answers
+        this.progress.forEach((e, i) => {
+            let blank = "";
+            if(e.answers == "" || e.answers == undefined || e.answers == null ) {
+                blank = "You didn’t answer this question";
+            }else {
+                blank = e.answers; 
+            }
+            console.log(e.isCorrect);
+            str += `<div class="result__question"><p>Question: ${i+1} ${e.questionTitle}</p></div><div class="result__you-answer"><p>Your answer:<br/> ${blank}</p></div><div class="result__correct-answer"><p>Correct answers:<br/> ${e.correctAnswers}</p></div>`;
         })
-        dats.innerText = this.progress;
+        dats.innerHTML = str;
         result.innerText = `You scored ${score}`;
-
+        //create button to go again to quiz
+        const againBtn = createButton({className: "button__again", parent: section, text: "GO AGAIN"});
+        againBtn.addEventListener('click', (e) => {
+            //clear everything
+            this.data = [];
+            this.currentQuestion = 0;
+            clearInterval(this.timeLeft);
+            clearTimeout(this.timer);
+            this.clearScreenAreaForce();
+            this.createStartScreen();
+        });
         section.appendChild(result);
         section.appendChild(dats);
-
-
+        section.appendChild(againBtn);
         this.root.appendChild(section);
     },
     //show current question
