@@ -22,8 +22,6 @@ export const createHtmlElement = ({ className,type, name, id = [], text}) => {
             label.innerText = e;
             div.appendChild(input);
             div.appendChild(label);
-            // const label = document.createElement('label');
-            // if(i) label.for = i; 
         });
     return div;
 };
