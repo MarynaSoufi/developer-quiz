@@ -60,9 +60,9 @@ const app = {
         this.clearScreenAreaForce();
         //defolt values configuration
         let configuration = {
-            level: null,
-            number: null,
-            category: null
+            level: "easy",
+            number: "5",
+            category: "Linux"
         };
 
         const section = document.createElement("section");
