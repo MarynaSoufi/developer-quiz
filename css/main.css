@@ -1,0 +1,156 @@
+
+@import './variables.css';
+/*GENERAL*/
+
+body,
+html {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    font-weight: normal;
+    font-size: 1rem;
+    color: var(--general-text-color);
+    line-height: 1.5;
+    font-weight: 300;
+    background-color: #d6bcd6;
+    /* position: relative; */
+}
+* {
+    box-sizing: border-box;
+}
+section {
+    width: 100vw;
+    height: 100vh;
+}
+.container {
+    max-width: 100%;
+    padding: 2rem;
+    margin: 0 auto;
+    max-height: 100%;
+}
+.hide {
+    display: none !important;
+}
+.active {
+    display: block;
+}
+.btn {
+    display: flex;
+    align-items: center;
+}
+button {
+    box-shadow: 3px 4px 0px 0px #899599;
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border-radius:15px;
+	border:1px solid #e312e3;
+	display:inline-block;
+	cursor:pointer;
+	color:#605a63;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+    display: block;
+    margin: 0 auto;
+    outline: none;
+    
+}
+.btn button:hover ,
+.btn_wrapper button:hover,
+.category button,
+.button__next,
+.button__stop {
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+.btn button:active,
+.btn_wrapper button:active,
+.category button,
+.button__next.
+.button__stop {
+	position:relative;
+	top:1px;
+}
+.button__next {
+    
+    margin-top: 20rem;
+}
+.message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.message p {
+    font-size: 2em;
+}
+.message ul {
+    list-style: square;
+    margin: 0;
+    padding: 0;
+    padding-left: 1em;
+    font-size: 1.5em;
+}
+.message ul > * {
+    margin-bottom: .5em;
+}
+.message span {
+    font-weight: 700;
+}
+.btn_wrapper {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 2.5em;
+}
+.choice {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    text-align: center;
+}
+.choice > * {
+    width: 100%;
+}
+.choice label {
+    font-size: 1.2em;
+}
+.level > * ,
+.number > *
+{
+    width: 100%;
+}
+.level p,
+.number p,
+.category p {
+    font-size: 1.5em;
+}
+.category {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.category select {
+    width: 70%;
+    border: none;
+    padding: 0.3em 0.5em;
+    outline: none;
+    background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+    border-radius:15px;
+    border:1px solid #e312e3;
+    cursor:pointer;
+	color:#605a63;
+}
+@media(min-width: 39.5em) {
+    .category > * {
+       width: 100%;
+    }
+}
+.category button {
+    width: 10em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
