@@ -27,7 +27,7 @@ section {
 }
 .container {
     max-width: 100%;
-    padding: 2rem;
+    padding: .5rem 2rem;
     margin: 0 auto;
     max-height: 100%;
 }
@@ -67,8 +67,66 @@ section {
     position: absolute;
     bottom:32px;
 }
+.result{
+    height: 100vh;
+}
+.result .endResults{
+    background-color: #2d2e83;
+    opacity: 80%;
+    height: 77.6vh;
+    overflow-y: auto;
+    color: #fff;
+    border: 1px solid #fff;
+    
+}
 
+.result .scoreText{
+    margin: 0;
+    padding: 16px 0;
+    background-color: #fff;
+    opacity: 95%;
+    color: #2d2e83;
+    text-align: center;
+    font-size: 21px;
+}
+.endResults div{
+    width:98%;
+    padding: 0 16px;
+}
+.button__again{
+width: 100%;
+height:78px;
+display: flex;
+justify-content: center;
+padding:32px;
+background-color:#fff;
+border:none;
+outline: none;
+opacity: 90%;;
+color:#2d2e83;
+cursor: pointer;
+font-size: 21px;
 
+}
+.button__again:hover{
+    opacity: 100%;
+}
+pre{
+    padding-left: 16px;
+}
+.light{
+    background-color: #fff;
+
+    color:#2d2e83;
+    padding:16px 0!important;
+
+}
+.dark{
+    background-color: #009fe3;
+
+    color:#fff;
+    padding:16px 0!important;
+}
 .message,.choice {
     display: flex;
     align-items: center;
@@ -122,13 +180,15 @@ section {
 }
 .choice {
     flex-wrap: wrap;
-    text-align: left;
-    align-items: flex-start;
+    text-align: center;
+    align-items: start;
     flex-direction: row;
     color: #fff;
+    padding-top: 96px;
 }
 .choice > .level, .number {
     width: 100%;
+    
 }
 .choice label {
     font-size: 1.2em;
@@ -138,10 +198,10 @@ section {
     margin-right: 8px;
 }
 .choice .number{
-    margin-top: -160px !important;
+    margin-top: -180px !important;
 }
 .choice .category{
-    margin-top: -160px;
+    margin-top: -240px;
 }
 
 .level p,
@@ -152,7 +212,7 @@ section {
 .category {
     display: flex;
     flex-wrap: wrap;
-    text-align: left;
+    text-align: center;
     align-items: center;
 }
 .category select {

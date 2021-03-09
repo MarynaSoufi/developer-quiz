@@ -236,8 +236,13 @@ const app = {
         let str = "";
         const section = document.createElement("section");
         section.classList.add("result");
+        section.classList.add('container');
+        const wrap = document.createElement('div');
+        wrap.classList.add('wrap');
         const result = document.createElement("p");
+        result.classList.add('scoreText');
         const dats = document.createElement('div');
+        dats.classList.add('endResults');
         //show all questions with correct answers and with real answers
         this.progress.forEach((e, i) => {
             let blank = "";
@@ -247,12 +252,12 @@ const app = {
                 blank = e.answers; 
             }
             console.log(e.isCorrect);
-            str += `<div class="result__question"><p>Question: ${i+1} ${e.questionTitle}</p></div><div class="result__you-answer"><p>Your answer:<br/> ${blank}</p></div><div class="result__correct-answer"><p>Correct answers:<br/> ${e.correctAnswers}</p></div>`;
+            str += `<div class="result__wrapper"><div class="result__question"><p>Question: ${i+1} <br>${e.questionTitle}</p></div><pre class="result__you-answer"><p>Your answer:<br/> ${blank}</p></pre><pre class="result__correct-answer"><p>Correct answers:<br/> ${e.correctAnswers}</p></pre></div>`;
         })
         dats.innerHTML = str;
         result.innerText = `You scored ${score}`;
         //create button to go again to quiz
-        const againBtn = createButton({className: "button__again", parent: section, text: "GO AGAIN"});
+        const againBtn = createButton({className: "button__again", parent: section, text: "START OVER"});
         againBtn.addEventListener('click', (e) => {
             //clear everything
             this.data = [];
@@ -262,10 +267,24 @@ const app = {
             this.clearScreenAreaForce();
             this.createStartScreen();
         });
-        section.appendChild(result);
-        section.appendChild(dats);
-        section.appendChild(againBtn);
+        
+        wrap.appendChild(result);
+        wrap.appendChild(dats);
+        wrap.appendChild(againBtn);
+        section.appendChild(wrap);
         this.root.appendChild(section);
+        
+
+        const wrapper = document.querySelectorAll('.result__wrapper');
+            if(!wrapper){return;}else{
+                for(const [index, value] of wrapper.entries()){
+                    if(index % 2 === 0){
+                        value.classList.add('light')
+                    }else{
+                        value.classList.add('dark')
+                    }
+                }
+            }
     },
     //show current question
     showCurrentQuestion() {
