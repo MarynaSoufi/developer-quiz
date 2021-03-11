@@ -274,7 +274,7 @@ const app = {
         section.appendChild(wrap);
         this.root.appendChild(section);
         
-
+        //add color for result screen
         const wrapper = document.querySelectorAll('.result__wrapper');
             if(!wrapper){return;}else{
                 for(const [index, value] of wrapper.entries()){
